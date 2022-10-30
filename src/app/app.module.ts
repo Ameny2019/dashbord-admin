@@ -6,12 +6,20 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { Page404Component } from './error-pages/page404/page404.component';
+import { Page500Component } from './error-pages/page500/page500.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
+    NavbarComponent,
+    SidebarComponent,
+    Page404Component,
+    Page500Component,
   ],
   imports: [
     BrowserModule,

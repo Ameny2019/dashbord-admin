@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ListDemandeComponent } from './components/demandeProduit/list-demande/list-demande.component';
 import { AjoutDemandeComponent } from './components/demandeProduit/ajout-demande/ajout-demande.component';
 import { UpdateEstampComponent } from './components/estamp/update-estamp/update-estamp.component';
@@ -17,8 +15,6 @@ import { AgentvalidationComponent } from './components/utilisateur/agentvalidati
 
 @NgModule({
   declarations: [
-    NavbarComponent,
-    SidebarComponent,
     ListDemandeComponent,
     AjoutDemandeComponent,
     UpdateEstampComponent,
