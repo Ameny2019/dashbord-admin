@@ -3,7 +3,7 @@
        <a class="nav-link" routerLink="/home">
         <i class="mdi mdi-grid-large menu-icon"></i>
         <span class="menu-title">Dashboard</span>
-      </a> 
+      </a>
     </li> -->
     <!-- <li class="nav-item nav-category">Articles et Produits</li> -->
     <li class="nav-item">
@@ -19,7 +19,7 @@
           <li class="nav-item"  routerLink="ajoutProduit"> <a class="nav-link" style="cursor:pointer">Ajouter un produit</a></li>
         </ul>
 
-        
+
         <ul class="nav flex-column sub-menu" *ngIf="role == 'Admin' || role === 'AgentValidation'" >
           <li class="nav-item"  routerLink="listDemande" > <a class="nav-link" style="cursor:pointer">Validation des produits</a></li>
         </ul>
@@ -31,7 +31,7 @@
         <ul class="nav flex-column sub-menu">
           <li class="nav-item"  routerLink="listecommandes"> <a class="nav-link" style="cursor:pointer" >Liste des commandes</a></li>
         </ul>
-        
+
       </div>
     </li>
 
@@ -51,19 +51,19 @@
       </div>
       <div class="collapse" id="form-elements">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"><a class="nav-link" routerLink="listeAgent" >Liste des Agents</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="listeAgent" >Liste des agents</a></li>
         </ul>
       </div>
       <div class="collapse" id="form-elements">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"><a class="nav-link" routerLink="agentvalidation" >Liste des Agents de validation</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="agentvalidation" >Liste des agents de validation</a></li>
         </ul>
       </div>
       <div class="collapse" id="form-elements">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"><a class="nav-link" routerLink="listeClient">Liste des Clients</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="listeClient">Liste des clients</a></li>
         </ul>
       </div>
-    
+
     </li>
   </ul>

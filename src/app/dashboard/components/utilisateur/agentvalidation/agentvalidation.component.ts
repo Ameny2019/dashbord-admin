@@ -6,22 +6,18 @@ import { agentvalidationService } from 'src/app/services/agentvalidation.service
   styleUrls: ['./agentvalidation.component.css']
 })
 export class AgentvalidationComponent implements OnInit {
-  agentvalidations:any;
-  users:any;
-  role:any;
+  agentvalidations: any;
+  users: any;
 
-
-  constructor(private agentvalidationservice:agentvalidationService) { }
+  constructor(private agentvalidationservice: agentvalidationService) { }
 
   ngOnInit(): void {
-   
-this.getagentvalidation();
+    this.getagentvalidation();
   }
-  getagentvalidation(){
+  getagentvalidation() {
     this.agentvalidationservice.getagentvalidation().subscribe(
       (res: any) => {
         this.users = res.data
-
         this.agentvalidations = this.users.filter(item => {
           return "AgentValidation" == item.role;
         })
@@ -29,15 +25,12 @@ this.getagentvalidation();
     )
   }
 
-
-
-supprimer(id:any){
-  this.agentvalidationservice.deleteagentvalidation(id).subscribe(
-    (res:any) => {
-      console.log("deleted");
-      this.getagentvalidation();
-    }
-  )
-}
+  supprimer(id: any) {
+    this.agentvalidationservice.deleteagentvalidation(id).subscribe(
+      (res: any) => {
+        this.getagentvalidation();
+      }
+    )
+  }
 
 }

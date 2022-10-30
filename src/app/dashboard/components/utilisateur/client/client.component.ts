@@ -19,22 +19,17 @@ export class ClientComponent implements OnInit {
   getClients() {
     this.agentServices.getAgent().subscribe(
       (res: any) => {
-        console.log('clients is :', res)
         this.users = res.data
         this.clients = this.users.filter(item => {
           return "Client" == item.role;
         })
-        console.log("clients is after filter ", this.clients)
-
       }
     )
   }
 
   supprimer(id:any){
-    
     this.agentServices.deleteAgent(id).subscribe(
       (res:any) => {
-        console.log("deleted");
         this.getClients();
       }
     )

@@ -15,7 +15,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let product of products ">
-                    <td *ngIf="product.producType == 'estamp'" > <img src="http://localhost:3000/{{product?.estamp?.photo}}" style="height: 100PX;
+                    <td *ngIf="product.producType == 'estamp'" > <img [src]="product?.estamp?.photo" style="height: 100PX;
                         width: 100px;" /> </td>
                     <td *ngIf="product.producType == 'estamp'" >{{product?.estamp?.reference}}</td>
                     <td *ngIf="product.producType == 'estamp'" >{{product?.estamp?.sujet}}</td>
@@ -32,13 +32,13 @@
                 </tr>
 
                 <tr *ngFor="let product of products ">
-                    <td *ngIf="product.producType == 'efleur'"  > <img src="http://localhost:3000/{{product?.efleur?.photo}}" style="height: 100PX;
+                    <td *ngIf="product.producType == 'efleur'"  > <img [src]="product?.efleur?.photo" style="height: 100PX;
                         width: 100px;" /> </td>
                     <td *ngIf="product.producType == 'efleur'" >{{product?.efleur?.nom}}</td>
                     <td *ngIf="product.producType == 'efleur'" >{{product?.efleur?.description}}</td>
                     <td *ngIf="product.producType == 'efleur'" >{{product?.efleur?.QunatityEfleurDisponible}}</td>
                     <td *ngIf="product.producType == 'efleur'" >
-  
+
 
                         <button type="button"  (click)="deleteProduct(product?._id)"
                             class="btn btn-danger btn-rounded btn-icon  mdi mdi-delete-sweep"  style="height: 40PX;
