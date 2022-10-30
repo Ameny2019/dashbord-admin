@@ -1,0 +1,30 @@
+<div class="card-body">
+    <h4 class="card-title">Liste des agents </h4>
+    <p class="card-description">
+    </p>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>nom</th>
+            <th>adresse</th>
+            <th>role</th>
+            <th>email</th>
+            <th>action</th>
+          </tr>
+        </thead>
+        <tbody>
+              <tr *ngFor="let agentvalidation of agentvalidations" >
+                <td>{{agentvalidation.nom}}</td>
+                <td>{{agentvalidation.adresse}}</td>
+                <td>{{agentvalidation.role}}</td>
+                <td>{{agentvalidation.email}}</td>
+                <td><button class="btn btn-danger" (click)="supprimer(agentvalidation._id)">supprimer</button></td>
+              </tr>
+  
+  
+        </tbody>
+  
+      </table>
+    </div>
+  </div>

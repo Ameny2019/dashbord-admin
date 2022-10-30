@@ -1,0 +1,69 @@
+<ul class="nav">
+    <!-- <li class="nav-item">
+       <a class="nav-link" routerLink="/home">
+        <i class="mdi mdi-grid-large menu-icon"></i>
+        <span class="menu-title">Dashboard</span>
+      </a> 
+    </li> -->
+    <!-- <li class="nav-item nav-category">Articles et Produits</li> -->
+    <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+        <i class="menu-icon mdi mdi-floor-plan"></i>
+        <span class="menu-title">Gestion des ventes</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="ui-basic">
+
+
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"  routerLink="ajoutProduit"> <a class="nav-link" style="cursor:pointer">Ajouter un produit</a></li>
+        </ul>
+
+        
+        <ul class="nav flex-column sub-menu" *ngIf="role == 'Admin' || role === 'AgentValidation'" >
+          <li class="nav-item"  routerLink="listDemande" > <a class="nav-link" style="cursor:pointer">Validation des produits</a></li>
+        </ul>
+
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"  routerLink="listProduct"> <a class="nav-link" style="cursor:pointer" >Liste des produits publiés </a></li>
+        </ul>
+
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"  routerLink="listecommandes"> <a class="nav-link" style="cursor:pointer" >Liste des commandes</a></li>
+        </ul>
+        
+      </div>
+    </li>
+
+    <!-- <li class="nav-item nav-category">Gestion des Utilisateurs</li> -->
+    <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
+        <i class="menu-icon mdi mdi-card-text-outline"></i>
+        <span class="menu-title">Gestion des utilisateurs</span>
+        <i class="menu-arrow"></i>
+      </a>
+
+
+      <div class="collapse" id="form-elements">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"><a class="nav-link" routerLink="ajouteAgent">Ajouter un agent</a></li>
+        </ul>
+      </div>
+      <div class="collapse" id="form-elements">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"><a class="nav-link" routerLink="listeAgent" >Liste des Agents</a></li>
+        </ul>
+      </div>
+      <div class="collapse" id="form-elements">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"><a class="nav-link" routerLink="agentvalidation" >Liste des Agents de validation</a></li>
+        </ul>
+      </div>
+      <div class="collapse" id="form-elements">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"><a class="nav-link" routerLink="listeClient">Liste des Clients</a></li>
+        </ul>
+      </div>
+    
+    </li>
+  </ul>

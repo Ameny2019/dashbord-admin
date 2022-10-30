@@ -1,0 +1,257 @@
+<div class="col-md-12 col-xl-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Ajouter un produit</h4>
+            <div class="home-tab">
+                <div class="d-sm-flex align-items-center justify-content-between border-bottom">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link ps-0 active" id="home-tab" data-bs-toggle="tab" href="#overview"
+                                role="tab" aria-controls="overview" aria-selected="true">Timbres postaux</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#audiences" role="tab"
+                                aria-selected="false">bouquets de fleurs</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab-content tab-content-basic">
+                    <div class="tab-pane fade active show" id="overview" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="">
+                            <div class="">
+                                <div class="">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div
+                                                class="statistics-details d-flex align-items-center justify-content-between">
+                                                <div class="col-12 col-lg-4 col-lg-12 grid-margin stretch-card">
+                                                    <div class="card card-rounded">
+                                                        <div class="card-body">
+                                                            <div
+                                                                class="d-sm-flex justify-content-between align-items-start">
+
+                                                                <div class="card-body">
+                                                                    <form class="form-sample" [formGroup]="formProduct"
+                                                                        (ngSubmit)="addEstamps()">
+                                                                        <div class="row">
+                                                                            <div class="col-md-6">
+                                                                                <div class="form-group row">
+                                                                                    <label
+                                                                                        class="col-sm-3 col-form-label">Nom
+                                                                                        Produit</label>
+                                                                                    <div class="col-sm-9">
+                                                                                        <input type="text"
+                                                                                            class="form-control"
+                                                                                            formControlName="sujet"
+                                                                                            placeholder="Nom*">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <div class="form-group row">
+                                                                                    <label
+                                                                                        class="col-sm-3 col-form-label">Réference</label>
+                                                                                    <div class="col-sm-9">
+                                                                                        <input type="text"
+                                                                                            class="form-control"
+                                                                                            formControlName="reference"
+                                                                                            placeholder="TP-xxxxx *">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                        <div class="row">
+                                                                            <div class="col-md-6">
+                                                                                <div class="form-group row">
+                                                                                    <label
+                                                                                        class="col-sm-3 col-form-label">format</label>
+                                                                                    <div class="col-sm-9">
+                                                                                        <input type="text"
+                                                                                            class="form-control"
+                                                                                            formControlName="format"
+                                                                                            placeholder="format *">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <div class="form-group row">
+                                                                                    <label
+                                                                                        class="col-sm-3 col-form-label">Image</label>
+                                                                                    <div class="col-sm-9">
+                                                                                        <input class="form-control"
+                                                                                            type="file"
+                                                                                            name="fileEstamps"
+                                                                                            (change)="handleFileInputEstamps($event)">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="row">
+                                                                            <div class="col-md-6">
+                                                                                <div class="form-group row">
+                                                                                    <label
+                                                                                        class="col-sm-3 col-form-label">artiste</label>
+                                                                                    <div class="col-sm-9">
+                                                                                        <input type="text"
+                                                                                            class="form-control"
+                                                                                            formControlName="artiste"
+                                                                                            placeholder="artiste *">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="col-md-6">
+                                                                                <div class="form-group row">
+                                                                                    <label
+                                                                                        class="col-sm-3 col-form-label">Quantité
+                                                                                    </label>
+                                                                                    <div class="col-sm-9">
+                                                                                        <input type="number"
+                                                                                            class="form-control"
+                                                                                            formControlName="QunatityEstampDisponible"
+                                                                                            placeholder="Quantite *">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </div>
+
+
+                                                                        <button class="btn btn-rounded btn-light"
+                                                                            style="float: right;">Annuler</button>
+                                                                        <button type="submit"
+                                                                            class="btn btn-primary btn-rounded"
+                                                                            style="color: white;float: right;">Confirmer</button>
+                                                                    </form>
+                                                                </div>
+
+
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="audiences" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="">
+
+                            <div class="tab-content tab-content-basic">
+                                <div class="">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div
+                                                class="statistics-details d-flex align-items-center justify-content-between">
+                                                <div class="col-12 col-lg-4 col-lg-12 grid-margin stretch-card">
+                                                    <div class="card card-rounded">
+                                                        <div class="card-body">
+                                                            <div
+                                                                class="d-sm-flex justify-content-between align-items-start">
+
+                                                                <div class="card-body">
+                                                                    <form class="form-sample" [formGroup]="formEfleur"
+                                                                        (ngSubmit)="add()">
+                                                                        <div class="row">
+                                                                            <div class="col-md-6">
+                                                                                <div class="form-group row">
+                                                                                    <label
+                                                                                        class="col-sm-3 col-form-label">Nom
+                                                                                        Produit</label>
+                                                                                    <div class="col-sm-9">
+                                                                                        <input type="text"
+                                                                                            class="form-control"
+                                                                                            formControlName="nom"
+                                                                                            placeholder="nom *">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <div class="form-group row">
+                                                                                    <label
+                                                                                        class="col-sm-3 col-form-label">Description</label>
+                                                                                    <div class="col-sm-9">
+                                                                                        <input type="text"
+                                                                                            class="form-control"
+                                                                                            formControlName="description"
+                                                                                            placeholder="description *">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                        <div class="row">
+                                                                            <div class="col-md-6">
+                                                                                <div class="form-group row">
+                                                                                    <label
+                                                                                        class="col-sm-3 col-form-label">Quantité</label>
+                                                                                    <div class="col-sm-9">
+                                                                                        <input type="number"
+                                                                                            class="form-control"
+                                                                                            formControlName="QunatityEfleurDisponible"
+                                                                                            placeholder="quantite *">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <div class="form-group row">
+                                                                                    <label
+                                                                                        class="col-sm-3 col-form-label">Image</label>
+                                                                                    <div class="col-sm-9">
+                                                                                        <input class="form-control"
+                                                                                            type="file" name="file"
+                                                                                            (change)="handleFileInput($event)">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+
+                                                                            <div class="col-md-6">
+                                                                                <div class="form-group row">
+                                                                                    <label
+                                                                                        class="col-sm-3 col-form-label">Réference</label>
+                                                                                    <div class="col-sm-9">
+                                                                                        <input type="text"
+                                                                                            class="form-control"
+                                                                                            formControlName="reference"
+                                                                                            placeholder="BF-xxxxx *">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                        <button class="btn btn-rounded btn-light"
+                                                                            style="float: right;">Annuler</button>
+                                                                        <button type="submit"
+                                                                            class="btn btn-primary btn-rounded"
+                                                                            style="color: white;float: right;">Confirmer</button>
+                                                                    </form>
+                                                                </div>
+
+
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
