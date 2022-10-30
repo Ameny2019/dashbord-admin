@@ -26,18 +26,14 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    console.log("login : ",this.formLogin.value);
-
       this.authService.login(this.formLogin.value).subscribe((res:any) => {
-        console.log("res is :",res.user);
-
-
-        if(res.success ){
-          localStorage.setItem('state','1');
-          localStorage.setItem('user',JSON.stringify(res.user))
-          localStorage.setItem('role',res.user.role)
-          localStorage.setItem('token',res.token)
-          this.router.navigateByUrl('/home');}
+        localStorage.setItem('token',res.token)
+        this.router.navigateByUrl('/home');
+        // if(res.success ){
+        //   localStorage.setItem('state','1');
+        //   localStorage.setItem('user',JSON.stringify(res.user))
+        //   localStorage.setItem('role',res.user.role)
+        // }
     })
 
   }
