@@ -8,12 +8,12 @@ export class CommandesService {
   // NOTE : vous n'avez pas de route ayent le préfixe 'listecommandes/..." dans le backend
   constructor(private http: HttpClient) { }
 
-  getcommande() {
-    return this.http.get(`${environment.baseURL}/Cart/getCart`);
+  getCommandes() {
+    return this.http.get(`${environment.baseURL}/Cart/getCarts`);
   }
 
-  deletecommande(id: any) {
-    return this.http.delete(`${environment.baseURL}/listecommandes/deletecommande/${id}`);
+  deleteCommande(id: any) {
+    return this.http.delete(`${environment.baseURL}/Cart/deleteCart/${id}`);
   }
 
   postcommande(product: any) {
