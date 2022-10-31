@@ -61,7 +61,7 @@ export class AuthService {
 
   clearUserData(){
     localStorage.removeItem('token');
-    this.router.navigate(['/']);
+    this.router.navigate(['/login']);
     this.isLoginSubject.next(false);
     this.usernameSubject.next('');
     this.emailSubject.next('');

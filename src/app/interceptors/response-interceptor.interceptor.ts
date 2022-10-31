@@ -23,7 +23,7 @@ export class ResponseInterceptor implements HttpInterceptor {
           localStorage.removeItem('token');
           this.toastService.info('Votre session a été expiré. Merci de refaire le login pour accéder à votre espace.');
           // Save user decoennection
-          this.router.navigate(['/']);
+          this.router.navigate(['/login']);
         }
         // Not Found error
         if (error.status === 404) {

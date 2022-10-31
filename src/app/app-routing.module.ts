@@ -10,6 +10,11 @@ import { Page500Component } from './error-pages/page500/page500.component';
 const routes: Routes = [
   {
     path: '',
+    redirectTo: '/home',
+    pathMatch: 'full',
+  },
+  {
+    path: 'login',
     component: LoginComponent,
     canActivate: [LoginGuard]
   },
