@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastService } from 'angular-toastify';
 import { FleursService } from 'src/app/services/fleurs.service';
 
 @Component({
@@ -9,12 +10,16 @@ import { FleursService } from 'src/app/services/fleurs.service';
   styleUrls: ['./update-efleur.component.css']
 })
 export class UpdateEfleurComponent implements OnInit {
-  efleur: any;
-  formEfleur: FormGroup
-  id: string;
+  formEfleur: FormGroup;
   fileToUpload: Array<File> = [];
+  id: string;
 
-  constructor(private activated: ActivatedRoute, private formBuilder: FormBuilder, private router: Router, private efleureService: FleursService) { }
+  constructor(private activated: ActivatedRoute,
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private efleureService: FleursService,
+    private toastService: ToastService,
+    ) { }
 
   ngOnInit(): void {
     this.id = this.activated.snapshot.params['idEfleur'];
@@ -28,26 +33,30 @@ export class UpdateEfleurComponent implements OnInit {
 
   getEfleurById() {
     this.efleureService.getFleurById(this.id).subscribe((res: any) => {
-      this.efleur = res.data;
-      this.formEfleur.patchValue({
-        nom: this.efleur.nom,
-        description: this.efleur.description,
-        photo: this.efleur.photo,
-        QunatityEfleurDisponible: this.efleur.QunatityEfleurDisponible
-      })
+      this.formEfleur.patchValue(res?.data)
     })
   }
-  
+
   handleFileInput(files: any) {
     this.fileToUpload = <Array<File>>files.target.files;
   }
 
   update() {
-    this.efleureService.updateEfleur(this.formEfleur.value, this.id).subscribe(
-      (res: any) => {
-        this.router.navigateByUrl('/home/listDemande')
-      }
-    )
+    const updateForm = this.formEfleur.value;
+    let formData: any = new FormData();
+    Object.keys(updateForm).forEach((fieldName) => {
+      formData.append(fieldName, updateForm[fieldName]);
+    });
+    if (this.fileToUpload.length>0) {
+      formData.append("photo", this.fileToUpload[0], this.fileToUpload[0].name);
+    }
+    this.efleureService.updateEfleur(formData, this.id).subscribe(
+      (response: any) => {
+        this.toastService.success(response?.message);
+        this.router.navigateByUrl('/home/listDemande');
+      }, (error: any) => {
+        this.toastService.error(`${error?.error?.message}`);
+      })
   }
 
 

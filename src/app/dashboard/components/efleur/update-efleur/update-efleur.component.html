@@ -8,14 +8,14 @@
               <div class="card-body">
                 <div class="d-sm-flex justify-content-between align-items-start">
                   <div class="card-body">
-                    <h4 class="card-title">modifier produit efleur</h4>
-                    <form class="form-sample" (ngSubmit)="update()">
+                    <h4 class="card-title title">Modifier produit Efleur</h4>
+                    <form [formGroup]="formEfleur" class="form-sample" (ngSubmit)="update()">
                       <div class="row">
                         <div class="col-md-6">
                           <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Nom *</label>
                             <div class="col-sm-9">
-                              <input type="text" class="form-control" formControlName="nom" placeholder="nom *">
+                              <input type="text" class="form-control" formControlName="nom" placeholder="Nom *">
                             </div>
                           </div>
                         </div>
@@ -24,7 +24,7 @@
                             <label class="col-sm-3 col-form-label">Description *</label>
                             <div class="col-sm-9">
                               <input type="text" class="form-control" formControlName="description"
-                                placeholder="description *">
+                                placeholder="Description *">
                             </div>
                           </div>
                         </div>
@@ -35,7 +35,7 @@
                             <label class="col-sm-3 col-form-label">Quantité</label>
                             <div class="col-sm-9">
                               <input type="text" class="form-control" formControlName="QunatityEfleurDisponible"
-                                placeholder="QunatityEfleurDisponible *">
+                                placeholder="Quantité *">
                             </div>
                           </div>
                         </div>
@@ -49,9 +49,16 @@
                           </div>
                         </div>
                       </div>
-                      <button class="btn btn-rounded btn-light" style="float: right;">Cancel</button>
-                      <button type="submit" class="btn btn-primary btn-rounded"
-                        style="color: white;float: right;">Submit</button>
+                      <div class="row">
+                        <div class="col-12 d-flex justify-content-end">
+                          <button routerLink="/home/listDemande" class="btn btn-rounded btn-light">
+                            <i class="fa fa-undo"></i> Annuler
+                          </button>
+                          <button type="submit" class="btn btn-primary btn-rounded text-white">
+                            <i class="fa fa-save"></i> Modifier
+                          </button>
+                        </div>
+                      </div>
                     </form>
                   </div>
                 </div>

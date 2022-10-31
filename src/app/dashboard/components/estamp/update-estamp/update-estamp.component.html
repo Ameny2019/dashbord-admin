@@ -8,23 +8,23 @@
               <div class="card-body">
                 <div class="d-sm-flex justify-content-between align-items-start">
                   <div class="card-body">
-                    <h4 class="card-title">Ajouter un produit de la philathélie </h4>
-                    <form class="form-sample" (ngSubmit)="addEstamps()">
+                    <h4 class="card-title title">Modifier un produit de la philathélie </h4>
+                    <form class="form-sample" [formGroup]="formProduct" (ngSubmit)="addEstamps()">
                       <div class="row">
                         <div class="col-md-6">
                           <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">sujet</label>
+                            <label class="col-sm-3 col-form-label">Sujet</label>
                             <div class="col-sm-9">
-                              <input type="text" class="form-control" formControlName="sujet" placeholder="sujet *">
+                              <input type="text" class="form-control" formControlName="sujet" placeholder="Sujet *">
                             </div>
                           </div>
                         </div>
                         <div class="col-md-6">
                           <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">reference</label>
+                            <label class="col-sm-3 col-form-label">Référence</label>
                             <div class="col-sm-9">
                               <input type="text" class="form-control" formControlName="reference"
-                                placeholder="reference *">
+                                placeholder="Référence *">
                             </div>
                           </div>
                         </div>
@@ -32,45 +32,51 @@
                       <div class="row">
                         <div class="col-md-6">
                           <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">format</label>
+                            <label class="col-sm-3 col-form-label">Format</label>
                             <div class="col-sm-9">
-                              <input type="text" class="form-control" formControlName="format" placeholder="format *">
+                              <input type="text" class="form-control" formControlName="format" placeholder="Format *">
                             </div>
                           </div>
                         </div>
                         <div class="col-md-6">
-                          <!-- <div class="form-group row">
-                                                        <label class="col-sm-3 col-form-label">Image</label>
-                                                        <div class="col-sm-9">
-                                                            <input class="form-control"
-                                                            type="file" name="fileEstamps"
-                                                            (change)="handleFileInput($event)">
-                                                        </div>
-                                                    </div> -->
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Image</label>
+                            <div class="col-sm-9">
+                              <input class="form-control" type="file" name="fileEstamps"
+                                (change)="handleFileInput($event)">
+                            </div>
+                          </div>
                         </div>
                       </div>
                       <div class="row">
                         <div class="col-md-6">
                           <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">artiste</label>
+                            <label class="col-sm-3 col-form-label">Artiste</label>
                             <div class="col-sm-9">
-                              <input type="text" class="form-control" formControlName="artiste" placeholder="artiste *">
+                              <input type="text" class="form-control" formControlName="artiste" placeholder="Artiste *">
                             </div>
                           </div>
                         </div>
                         <div class="col-md-6">
                           <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">Quantite </label>
+                            <label class="col-sm-3 col-form-label">Quantité </label>
                             <div class="col-sm-9">
                               <input type="text" class="form-control" formControlName="QunatityEstampDisponible"
-                                placeholder="artiste *">
+                                placeholder="Quantité *">
                             </div>
                           </div>
                         </div>
                       </div>
-                      <button class="btn btn-rounded btn-light" style="float: right;">Cancel</button>
-                      <button type="submit" class="btn btn-primary btn-rounded"
-                        style="color: white;float: right;">Submit</button>
+                      <div class="row">
+                        <div class="col-12 d-flex justify-content-end">
+                          <button routerLink="/home/listDemande" class="btn btn-rounded btn-light">
+                            <i class="fa fa-undo"></i> Annuler
+                          </button>
+                          <button type="submit" class="btn btn-primary btn-rounded text-white">
+                            <i class="fa fa-save"></i> Modifier
+                          </button>
+                        </div>
+                      </div>
                     </form>
                   </div>
                 </div>
