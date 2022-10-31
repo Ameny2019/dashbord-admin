@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastService } from 'angular-toastify';
+import { SweetAlertService } from 'src/app/providers/sweet-alert.service';
 import { EstampsService } from 'src/app/services/estamps.service';
 import { FleursService } from 'src/app/services/fleurs.service';
 import { ProductService } from 'src/app/services/product.service';
@@ -17,7 +19,8 @@ export class ListDemandeComponent implements OnInit {
   constructor(private estampsService: EstampsService,
     private fleurservice: FleursService,
     private productService: ProductService,
-
+    private toastService: ToastService,
+    private sweetAlertService: SweetAlertService,
   ) { }
 
   ngOnInit(): void {
@@ -42,67 +45,34 @@ export class ListDemandeComponent implements OnInit {
   }
 
   supprimerEstamps(id: any) {
-    Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
-    }).then((result) => {
-      if (result.isConfirmed) {
-
-        this.estampsService.deleteEstamps(id).subscribe(
-          (res: any) => {
-            console.log("deleted");
-            this.getEstamps();
-          }
-        )
-
-        Swal.fire(
-          'Deleted!',
-          'Your file has been deleted.',
-          'success'
-        )
+    this.sweetAlertService.deleteConfirmation().then((result) => {
+      if (result.value) {
+        this.estampsService.deleteEstamps(id).subscribe((response: any) => {
+          this.toastService.success(response?.message);
+          this.getEstamps();
+        }, (error: any) => {
+          this.toastService.error(`${error?.error?.message}`);
+        });
       }
-    })
-
-
+    });
   }
 
   supprimerEfleur(id: any) {
-    Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
-    }).then((result) => {
-      if (result.isConfirmed) {
-
-        this.fleurservice.deleteEfleur(id).subscribe(
-          (res: any) => {
-            console.log("deleted");
-            this.getfleurs();
-          }
-        )
-
-        Swal.fire(
-          'Deleted!',
-          'Your file has been deleted.',
-          'success'
-        )
+    this.sweetAlertService.deleteConfirmation().then((result) => {
+      if (result.value) {
+        this.fleurservice.deleteEfleur(id).subscribe((response: any) => {
+          this.toastService.success(response?.message);
+          this.getfleurs();
+        }, (error: any) => {
+          this.toastService.error(`${error?.error?.message}`);
+        });
       }
-    })
-
+    });
   }
 
   async validateEstamp(estamps: any) {
     const { value: text } = await Swal.fire({
-      imageUrl: 'http://localhost:3000/' + estamps.photo,
+      imageUrl: estamps.photo,
       imageWidth: 200,
       imageHeight: 200,
       input: 'number',
@@ -142,7 +112,7 @@ export class ListDemandeComponent implements OnInit {
   async validateEfleur(efleur: any) {
 
     const { value: text } = await Swal.fire({
-      imageUrl: 'http://localhost:3000/' + efleur.photo,
+      imageUrl: efleur.photo,
       imageWidth: 200,
       imageHeight: 200,
       input: 'number',
