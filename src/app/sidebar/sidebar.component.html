@@ -20,7 +20,7 @@
         </ul>
 
 
-        <ul class="nav flex-column sub-menu" *ngIf="role == 'Admin' || role === 'AgentValidation'" >
+        <ul class="nav flex-column sub-menu" *ngIf="authService.roleSubject.getValue() == 'Admin' || authService.roleSubject.getValue() === 'AgentValidation'" >
           <li class="nav-item"  routerLink="listDemande" > <a class="nav-link" style="cursor:pointer">Validation des produits</a></li>
         </ul>
 

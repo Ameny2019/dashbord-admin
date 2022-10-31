@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,20 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  role:any=localStorage.getItem('role')  
-  
-  constructor() { }
+  constructor(public authService: AuthService) { }
 
-  ngOnInit(): void {
-
-    // console.log('here navbar')
-    // var user = JSON.parse(localStorage.getItem("user"));
-    // console.log("name is : ",user.role)
-    // this.role=user.role;
-
-    console.log("role :",this.role);
-    
-
-  }
+  ngOnInit(): void {}
 
 }
