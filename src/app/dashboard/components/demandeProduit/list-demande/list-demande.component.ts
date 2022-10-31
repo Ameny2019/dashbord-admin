@@ -41,7 +41,7 @@ export class ListDemandeComponent implements OnInit {
     )
   }
 
-  supprimerEstamps(id) {
+  supprimerEstamps(id: any) {
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -71,7 +71,7 @@ export class ListDemandeComponent implements OnInit {
 
   }
 
-  supprimer(id: any) {
+  supprimerEfleur(id: any) {
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -139,7 +139,6 @@ export class ListDemandeComponent implements OnInit {
 
   }
 
-
   async validateEfleur(efleur: any) {
 
     const { value: text } = await Swal.fire({
@@ -183,7 +182,5 @@ export class ListDemandeComponent implements OnInit {
     }
 
   }
-
-
 
 }

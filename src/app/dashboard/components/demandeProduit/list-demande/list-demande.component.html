@@ -22,9 +22,8 @@
           <td>{{ estamp?.sujet }}</td>
           <td>{{ estamp?.QunatityEstampDisponible }}</td>
           <td>
-            <!-- <button class="btn btn-danger" (click)="supprimerEstamps(estamp._id)" >supprimer</button> -->
             <button type="button" class="btn btn-success btn-rounded btn-icon mdi mdi-lead-pencil btn-action text-white"
-              routerLink="/home/updateEstamp/{{ estamp._id }}">
+              [routerLink]="['/home/updateEstamp', estamp._id]">
             </button>
             <button type="button" class="btn btn-info btn-rounded btn-icon mdi mdi-check-all btn-action text-white"
               (click)="validateEstamp(estamp)">
@@ -42,14 +41,13 @@
           <td>{{ fleur?.description }}</td>
           <td>{{ fleur?.QunatityEfleurDisponible }}</td>
           <td>
-            <!-- <button class="btn btn-danger" (click)="supprimer(fleur._id)">supprimer</button> -->
             <button type="button" class="btn btn-success btn-rounded btn-icon mdi mdi-lead-pencil btn-action text-white"
-              routerLink="/home/updateEfleur/{{ fleur._id }}">
+              [routerLink]="['/home/updateEfleur', fleur._id]">
             </button>
             <button type="button" class="btn btn-info btn-rounded btn-icon mdi mdi-check-all btn-action text-white"
               (click)="validateEfleur(fleur)">
             </button>
-            <button type="button" (click)="supprimer(fleur._id)"
+            <button type="button" (click)="supprimerEfleur(fleur._id)"
               class="btn btn-danger btn-rounded btn-icon mdi mdi-delete-sweep btn-action text-white">
             </button>
           </td>
