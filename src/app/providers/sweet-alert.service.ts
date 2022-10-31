@@ -21,4 +21,23 @@ export class SweetAlertService {
       cancelButtonText: `<i class="fa fa-times" aria-hidden="true"></i> Non, annuler`
     });
   }
+
+  showApprovementAlert(imgURL: any, price: any){
+    return Swal.fire({
+      imageUrl: imgURL,
+      imageWidth: 200,
+      imageHeight: 200,
+      input: 'number',
+      // inputLabel: 'Prix',
+      inputPlaceholder: 'Tapez votre prix ici...',
+      inputAttributes: {
+        'aria-label': 'Tapez votre prix ici',
+      },
+      showCancelButton: true,
+      confirmButtonColor: '#4dbd74',
+      cancelButtonColor: '#f86c6b',
+      confirmButtonText: `<i class="fa fa-check" aria-hidden="true"></i> Oui, approuver-le`,
+      cancelButtonText: `<i class="fa fa-times" aria-hidden="true"></i> Non, annuler`
+    });
+  }
 }

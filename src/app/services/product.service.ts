@@ -5,7 +5,7 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService { 
+export class ProductService {
 
 constructor(private http:HttpClient) { }
 
@@ -17,8 +17,8 @@ deleteproduct(id: any){
   return this.http.delete(`${environment.baseURL}/product/deleteProduct/${id}`);
 }
 
-postproduct(product: any){
-  return this.http.post(`${environment.baseURL}/product/createProduct`, product);
+createProduct(productData: any, subProductId: any){
+  return this.http.post(`${environment.baseURL}/product/createProduct/${subProductId}`, productData);
 }
 
 getProductById(id:any){

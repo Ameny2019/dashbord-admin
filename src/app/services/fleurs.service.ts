@@ -34,12 +34,6 @@ export class FleursService {
     getEfleursOui(){
       return this.http.get(`${environment.baseURL}/efleur/getOuiEtatProductEfleur`)
     }
-  
-    getEfleursNon(){
-      return this.http.get(`${environment.baseURL}/efleur/getNonEtatProductEfleur`)
-    }
-
-  
 
 }
 

@@ -24,22 +24,14 @@ export class ListDemandeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getEstamps();
-    this.getfleurs();
+    this.getProductsToApprouve();
   }
 
-  getEstamps() {
-    this.estampsService.getEstampsNon().subscribe(
+  getProductsToApprouve() {
+    this.estampsService.getProductsToApprouve().subscribe(
       (res: any) => {
-        this.estamps = res;
-      }
-    )
-  }
-
-  getfleurs() {
-    this.fleurservice.getEfleursNon().subscribe(
-      (res: any) => {
-        this.fleurs = res;
+        this.estamps = res?.listEStampsToApprouve;
+        this.fleurs = res?.listEfleursToApprouve;
       }
     )
   }
@@ -49,7 +41,7 @@ export class ListDemandeComponent implements OnInit {
       if (result.value) {
         this.estampsService.deleteEstamps(id).subscribe((response: any) => {
           this.toastService.success(response?.message);
-          this.getEstamps();
+          this.getProductsToApprouve();
         }, (error: any) => {
           this.toastService.error(`${error?.error?.message}`);
         });
@@ -62,7 +54,7 @@ export class ListDemandeComponent implements OnInit {
       if (result.value) {
         this.fleurservice.deleteEfleur(id).subscribe((response: any) => {
           this.toastService.success(response?.message);
-          this.getfleurs();
+          this.getProductsToApprouve();
         }, (error: any) => {
           this.toastService.error(`${error?.error?.message}`);
         });
@@ -71,86 +63,97 @@ export class ListDemandeComponent implements OnInit {
   }
 
   async validateEstamp(estamps: any) {
-    const { value: text } = await Swal.fire({
-      imageUrl: estamps.photo,
-      imageWidth: 200,
-      imageHeight: 200,
-      input: 'number',
-      //inputLabel: 'Prix',
-      inputPlaceholder: 'Tapez votre prix ici...',
-      inputAttributes: {
-        'aria-label': 'Tapez votre prix ici'
-      },
-      showCancelButton: true
-    })
+    this.sweetAlertService.showApprovementAlert(estamps.photo, estamps.price).then((result) => {
+      if (result.value) {
+        // approve the current efleur
+        const productData = {
+          price: result.value,
+          producType: "estamp",
+          estamp: estamps._id,
+          quantity: result.value,
+        }
+        this.createProductAndApprouveSubProduct(productData, estamps._id);
 
-    if (text) {
-      console.log("estamps to product is ", estamps);
-
-      let estampsProduct = await {
-        productId: estamps._id,
-        estamp: estamps._id,
-        price: text,
-        producType: "estamp"
+        // this.estampsService.updateEtatEstamp(estamps._id).subscribe((res: any) => {
+        //   console.log("res is :", res);
+        //   this.getProductsToApprouve();
+        // });
       }
+    });
 
-      this.productService.postproduct(estampsProduct).subscribe((res: any) => {
-        console.log("product is :", res);
-        //Swal.fire(res.data)
-      })
-    }
+    //  Old code
+    // const { value: text } = await Swal.fire({
+    //   imageUrl: estamps.photo,
+    //   imageWidth: 200,
+    //   imageHeight: 200,
+    //   input: 'number',
+    //   //inputLabel: 'Prix',
+    //   inputPlaceholder: 'Tapez votre prix ici...',
+    //   inputAttributes: {
+    //     'aria-label': 'Tapez votre prix ici'
+    //   },
+    //   showCancelButton: true
+    // })
 
-    this.estampsService.updateEtatEstamp(estamps._id).subscribe((res: any) => {
-      console.log("res is :", res);
-      this.getEstamps();
+    // if (text) {
+    //   console.log("estamps to product is ", estamps);
+
+    //   let estampsProduct = {
+    //     productId: estamps._id,
+    //     estamp: estamps._id,
+    //     price: text,
+    //     producType: "estamp"
+    //   }
+
+    //   this.productService.postproduct(estampsProduct).subscribe((res: any) => {
+    //     console.log("product is :", res);
+    //     //Swal.fire(res.data)
+    //   })
+    // }
+
+    // this.estampsService.updateEtatEstamp(estamps._id).subscribe((res: any) => {
+    //   console.log("res is :", res);
+    //   this.getProductsToApprouve();
 
 
-    })
+    // })
 
   }
 
-  async validateEfleur(efleur: any) {
+  validateEfleur(efleur: any) {
+    this.sweetAlertService.showApprovementAlert(efleur.photo, efleur.price).then((result) => {
+      if (result.value) {
+        // approve the current efleur
+        const productData = {
+          price: result.value,
+          producType: "efleur",
+          efleur: efleur._id,
+          quantity: result.value,
+        }
+        this.createProductAndApprouveSubProduct(productData, efleur._id);
 
-    const { value: text } = await Swal.fire({
-      imageUrl: efleur.photo,
-      imageWidth: 200,
-      imageHeight: 200,
-      input: 'number',
-      //inputLabel: 'Prix',
-      inputPlaceholder: 'Tapez votre prix ici...',
-      inputAttributes: {
-        'aria-label': 'Tapez votre prix ici'
-      },
-      showCancelButton: true
-    })
-
-    if (text) {
-
-      console.log("efleur to product is ", efleur);
-
-
-      let efleurProduct = await {
-        productId: efleur._id,
-        efleur: efleur._id,
-        price: text,
-        photo: efleur.photo,
-        producType: "efleur",
+        // this.productService.createProduct(efleurProduct).subscribe((res: any) => {
+        //   console.log("product is :", res);
+        //   this.getProductsToApprouve();
+        //   // sera supprimé aprés la validation
+        //   this.fleurservice.updateEtatEfleur(efleur._id).subscribe((res: any) => {
+        //     console.log("res is :", res);
+        //     this.getProductsToApprouve();
+        //   })
+        // })
       }
+    });
+  }
 
-      this.productService.postproduct(efleurProduct).subscribe((res: any) => {
-        console.log("product is :", res);
-        this.getfleurs();
-        //Swal.fire(res.data)
-
-        // sera supprimé aprés la validation
-
-        this.fleurservice.updateEtatEfleur(efleur._id).subscribe((res: any) => {
-          console.log("res is :", res);
-          this.getfleurs();
-        })
+  // le subProductId est un ID d'une la collection :
+  createProductAndApprouveSubProduct(productData: any, subProductId: any) {
+    this.productService.createProduct(productData, subProductId)
+      .subscribe((response: any) => {
+        this.toastService.success(response?.message);
+        this.getProductsToApprouve();
+      }, (error: any) => {
+        this.toastService.error(`${error?.error?.message}`);
       })
-    }
-
   }
 
 }

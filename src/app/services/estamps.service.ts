@@ -37,7 +37,7 @@ export class EstampsService {
     return this.http.get(`${environment.baseURL}/estamps/getOuiEtatProductEstamp`)
   }
 
-  getEstampsNon(){
-    return this.http.get(`${environment.baseURL}/estamps/getNonEtatProductEstamp`)
+  getProductsToApprouve(){
+    return this.http.get(`${environment.baseURL}/estamps/get-products-to-approuve`)
   }
 }
