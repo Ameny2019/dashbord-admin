@@ -12,6 +12,8 @@ import { Page404Component } from './error-pages/page404/page404.component';
 import { Page500Component } from './error-pages/page500/page500.component';
 import { TokenInterceptor } from './interceptors/token-interceptor.interceptor';
 import { ResponseInterceptor } from './interceptors/response-interceptor.interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastService, AngularToastifyModule } from 'angular-toastify';
 
 @NgModule({
   declarations: [
@@ -25,12 +27,15 @@ import { ResponseInterceptor } from './interceptors/response-interceptor.interce
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    AngularToastifyModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
   ],
   providers: [
+    ToastService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

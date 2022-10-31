@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastService } from 'angular-toastify';
+import { SweetAlertService } from 'src/app/providers/sweet-alert.service';
 import { agentvalidationService } from 'src/app/services/agentvalidation.service';
+
 @Component({
   selector: 'app-agentvalidation',
   templateUrl: './agentvalidation.component.html',
@@ -9,7 +12,9 @@ export class AgentvalidationComponent implements OnInit {
   agentvalidations: any;
   users: any;
 
-  constructor(private agentvalidationservice: agentvalidationService) { }
+  constructor(private agentvalidationservice: agentvalidationService,
+    private toastService: ToastService,
+    private sweetAlertService: SweetAlertService,) { }
 
   ngOnInit(): void {
     this.getagentvalidation();
@@ -26,11 +31,16 @@ export class AgentvalidationComponent implements OnInit {
   }
 
   supprimer(id: any) {
-    this.agentvalidationservice.deleteagentvalidation(id).subscribe(
-      (res: any) => {
-        this.getagentvalidation();
+    this.sweetAlertService.deleteConfirmation().then((result) => {
+      if (result.value) {
+        this.agentvalidationservice.deleteagentvalidation(id).subscribe((response: any) => {
+          this.toastService.success(response?.message);
+          this.getagentvalidation();
+        }, (error: any) => {
+          this.toastService.error(`${error?.error?.message}`);
+        });
       }
-    )
+    });
   }
 
 }

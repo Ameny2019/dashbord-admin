@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastService } from 'angular-toastify';
 import { AgentService } from 'src/app/services/agent.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-ajout-utilisateur',
@@ -9,56 +11,50 @@ import { AgentService } from 'src/app/services/agent.service';
   styleUrls: ['./ajout-utilisateur.component.css']
 })
 export class AjoutUtilisateurComponent implements OnInit {
+  formAgent: FormGroup
+  roleSelected: string = "Client";
 
-
-  formAgent:FormGroup
-  roleSelected:string="Client";
-  role:any=localStorage.getItem('role')
-
-  constructor(private formBuilder:FormBuilder,private router:Router,private agentService:AgentService) { }
+  constructor(private formBuilder: FormBuilder,
+    private router: Router,
+    private agentService: AgentService,
+    private toastService: ToastService,
+    public authService: AuthService) { }
 
   ngOnInit(): void {
-
-
-    /*console.log('here ajout')
-    var user = JSON.parse(localStorage.getItem("user"));
-    console.log("role is : ",user.role)
-    this.role=user.role; */
-
-
     this.formAgent = this.formBuilder.group({
-      nom:'',
-      adresse:'',
-      email:'',
-      password:'',
-      role:'Agent',
+      nom: '',
+      adresse: '',
+      email: '',
+      password: '',
+      role: 'Agent',
     })
 
   }
 
-  add(){
-    console.log("utilisateur is ",this.formAgent.value);
-
-    this.agentService.postAgent(this.formAgent.value).subscribe(
-      (res:any) => {
-        console.log("agent is : ",res);
+  add() {
+    this.agentService.postAgent(this.formAgent.value)
+    .subscribe(
+      (res: any) => {
+        this.toastService.success(res?.message);
         this.router.navigateByUrl('/home/listeAgent')
+      }, (error: any) => {
+        this.toastService.error(`${error?.error?.message}`);
       }
     )
   }
 
-  setAGV(){
-this.roleSelected="AgentValidation"
-this.formAgent.patchValue({
-  role:this.roleSelected
-})
+  setAGV() {
+    this.roleSelected = "AgentValidation"
+    this.formAgent.patchValue({
+      role: this.roleSelected
+    })
   }
 
-  setAG(){
-    this.roleSelected="Agent"
+  setAG() {
+    this.roleSelected = "Agent"
     this.formAgent.patchValue({
-      role:this.roleSelected
+      role: this.roleSelected
     })
-      }
+  }
 
 }

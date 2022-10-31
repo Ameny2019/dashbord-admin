@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastService } from 'angular-toastify';
+import { SweetAlertService } from 'src/app/providers/sweet-alert.service';
 import { AgentService } from 'src/app/services/agent.service';
-// import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-agent',
@@ -11,7 +12,10 @@ export class AgentComponent implements OnInit {
   agents: any;
   users: any;
 
-  constructor(private agentServices: AgentService) { }
+  constructor(private agentServices: AgentService,
+    private toastService: ToastService,
+    private sweetAlertService: SweetAlertService,
+  ) { }
 
   ngOnInit(): void {
     this.getAgents();
@@ -28,14 +32,17 @@ export class AgentComponent implements OnInit {
     )
   }
 
-
-
   supprimer(id: any) {
-    this.agentServices.deleteAgent(id).subscribe(
-      (res: any) => {
-        this.getAgents();
+    this.sweetAlertService.deleteConfirmation().then((result) => {
+      if (result.value) {
+        this.agentServices.deleteAgent(id).subscribe((response: any) => {
+          this.toastService.success(response?.message);
+          this.getAgents();
+        }, (error: any) => {
+          this.toastService.error(`${error?.error?.message}`);
+        });
       }
-    )
+    });
   }
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastService } from 'angular-toastify';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -16,6 +17,7 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router,
     private formBuilder: FormBuilder,
     private authService: AuthService,
+    private toastService: ToastService
   ) { }
 
   ngOnInit(): void {
@@ -27,8 +29,11 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.authService.login(this.formLogin.value).subscribe((res: any) => {
-      localStorage.setItem('token', res.token)
+      this.authService.setToken(res?.token);
       this.router.navigateByUrl('/home');
+      this.toastService.success('Bienvenue');
+    }, (error: any) => {
+      this.toastService.error(`${error?.error?.message}`);
     });
   }
 
