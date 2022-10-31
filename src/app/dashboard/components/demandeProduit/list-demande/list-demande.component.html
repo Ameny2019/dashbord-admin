@@ -5,84 +5,53 @@
     <table class="table">
       <thead>
         <tr>
-          <th style="width: 20%">Image</th>
-          <th style="width: 20%">Reference</th>
-          <th style="width: 20%">sujet</th>
-          <th style="width: 20%">Quantite</th>
-          <th style="width: 20%">Action</th>
+          <th class="item">Image</th>
+          <th class="item">Référence</th>
+          <th class="item">Sujet</th>
+          <th class="item">Quantité</th>
+          <th class="item">Actions</th>
         </tr>
       </thead>
       <tbody>
         <!-- formulaire des timbres postes  -->
         <tr *ngFor="let estamp of estamps">
           <td>
-            <img
-              [src]="estamp.photo"
-              style="height: 100px; width: 100px"
-            />
+            <img [src]="estamp.photo" class="img-product" />
           </td>
           <td>{{ estamp?.reference }}</td>
           <td>{{ estamp?.sujet }}</td>
           <td>{{ estamp?.QunatityEstampDisponible }}</td>
           <td>
             <!-- <button class="btn btn-danger" (click)="supprimerEstamps(estamp._id)" >supprimer</button> -->
-
-            <button
-              type="button"
-              class="btn btn-success btn-rounded btn-icon mdi mdi-lead-pencil"
-              routerLink="/home/updateEstamp/{{ estamp._id }}"
-              style="height: 40px; width: 63px"
-            ></button>
-
-            <button
-              type="button"
-              class="btn btn-info btn-rounded btn-icon mdi mdi-check-all"
-              (click)="validateEstamp(estamp)"
-              style="height: 40px; width: 63px"
-            ></button>
-
-            <button
-              type="button"
-              (click)="supprimerEstamps(estamp._id)"
-              class="btn btn-danger btn-rounded btn-icon mdi mdi-delete-sweep"
-              style="height: 40px; width: 63px"
-            ></button>
+            <button type="button" class="btn btn-success btn-rounded btn-icon mdi mdi-lead-pencil btn-action text-white"
+              routerLink="/home/updateEstamp/{{ estamp._id }}">
+            </button>
+            <button type="button" class="btn btn-info btn-rounded btn-icon mdi mdi-check-all btn-action text-white"
+              (click)="validateEstamp(estamp)">
+            </button>
+            <button type="button" (click)="supprimerEstamps(estamp._id)"
+              class="btn btn-danger btn-rounded btn-icon mdi mdi-delete-sweep btn-action text-white">
+            </button>
           </td>
         </tr>
-
-        <tr *ngFor="let fleur of fleurs" style="background-color: #e2e8ef">
+        <tr *ngFor="let fleur of fleurs" class="bg-white">
           <td>
-            <img
-              [src]="fleur?.photo"
-              style="height: 100px; width: 100px"
-            />
+            <img [src]="fleur?.photo" class="img-product" />
           </td>
           <td>{{ fleur?.nom }}</td>
           <td>{{ fleur?.description }}</td>
-
           <td>{{ fleur?.QunatityEfleurDisponible }}</td>
           <td>
             <!-- <button class="btn btn-danger" (click)="supprimer(fleur._id)">supprimer</button> -->
-            <button
-              type="button"
-              class="btn btn-success btn-rounded btn-icon mdi mdi-lead-pencil"
-              routerLink="/home/updateEfleur/{{ fleur._id }}"
-              style="height: 40px; width: 63px"
-            ></button>
-
-            <button
-              type="button"
-              class="btn btn-info btn-rounded btn-icon mdi mdi-check-all"
-              (click)="validateEfleur(fleur)"
-              style="height: 40px; width: 63px"
-            ></button>
-
-            <button
-              type="button"
-              (click)="supprimer(fleur._id)"
-              class="btn btn-danger btn-rounded btn-icon mdi mdi-delete-sweep"
-              style="height: 40px; width: 63px"
-            ></button>
+            <button type="button" class="btn btn-success btn-rounded btn-icon mdi mdi-lead-pencil btn-action text-white"
+              routerLink="/home/updateEfleur/{{ fleur._id }}">
+            </button>
+            <button type="button" class="btn btn-info btn-rounded btn-icon mdi mdi-check-all btn-action text-white"
+              (click)="validateEfleur(fleur)">
+            </button>
+            <button type="button" (click)="supprimer(fleur._id)"
+              class="btn btn-danger btn-rounded btn-icon mdi mdi-delete-sweep btn-action text-white">
+            </button>
           </td>
         </tr>
       </tbody>

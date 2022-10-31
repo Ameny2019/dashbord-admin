@@ -11,34 +11,37 @@ import Swal from 'sweetalert2';
   styleUrls: ['./list-demande.component.css']
 })
 export class ListDemandeComponent implements OnInit {
+  estamps: any;
+  fleurs: any;
 
-  estamps:any
-  fleurs: any
-
-  constructor(private estampsService:EstampsService,
+  constructor(private estampsService: EstampsService,
     private fleurservice: FleursService,
     private productService: ProductService,
 
-
-    ) { }
+  ) { }
 
   ngOnInit(): void {
-this.getEstamps();
-this.getfleurs();
+    this.getEstamps();
+    this.getfleurs();
   }
 
-  getEstamps(){
+  getEstamps() {
     this.estampsService.getEstampsNon().subscribe(
-      (res:any) => {
-        console.log("estamps is ",res);
-        this.estamps=res;
+      (res: any) => {
+        this.estamps = res;
       }
     )
   }
 
-  supprimerEstamps(id){
+  getfleurs() {
+    this.fleurservice.getEfleursNon().subscribe(
+      (res: any) => {
+        this.fleurs = res;
+      }
+    )
+  }
 
-
+  supprimerEstamps(id) {
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -51,7 +54,7 @@ this.getfleurs();
       if (result.isConfirmed) {
 
         this.estampsService.deleteEstamps(id).subscribe(
-          (res:any) => {
+          (res: any) => {
             console.log("deleted");
             this.getEstamps();
           }
@@ -63,22 +66,12 @@ this.getfleurs();
           'success'
         )
       }
-    })     
+    })
 
 
   }
 
-  getfleurs() {
-    this.fleurservice.getEfleursNon().subscribe(
-      (res: any) => {
-        console.log("fleur:", res)
-        this.fleurs = res;
-
-      }
-    )
-  }
-
-  supprimer(id:any){
+  supprimer(id: any) {
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -91,7 +84,7 @@ this.getfleurs();
       if (result.isConfirmed) {
 
         this.fleurservice.deleteEfleur(id).subscribe(
-          (res:any) => {
+          (res: any) => {
             console.log("deleted");
             this.getfleurs();
           }
@@ -103,94 +96,94 @@ this.getfleurs();
           'success'
         )
       }
-    })    
+    })
 
   }
 
-  async validateEstamp(estamps:any){
+  async validateEstamp(estamps: any) {
     const { value: text } = await Swal.fire({
-      imageUrl: 'http://localhost:3000/'+estamps.photo,
+      imageUrl: 'http://localhost:3000/' + estamps.photo,
       imageWidth: 200,
       imageHeight: 200,
       input: 'number',
-     //inputLabel: 'Prix',
+      //inputLabel: 'Prix',
       inputPlaceholder: 'Tapez votre prix ici...',
       inputAttributes: {
         'aria-label': 'Tapez votre prix ici'
       },
       showCancelButton: true
     })
-    
+
     if (text) {
-      console.log("estamps to product is ",estamps);
+      console.log("estamps to product is ", estamps);
 
       let estampsProduct = await {
-        productId:estamps._id,
-        estamp:estamps._id,
-        price:text,
-        producType:"estamp"
+        productId: estamps._id,
+        estamp: estamps._id,
+        price: text,
+        producType: "estamp"
       }
 
-      this.productService.postproduct(estampsProduct).subscribe((res:any) => {
-        console.log("product is :",res);
+      this.productService.postproduct(estampsProduct).subscribe((res: any) => {
+        console.log("product is :", res);
         //Swal.fire(res.data)
       })
     }
 
-    this.estampsService.updateEtatEstamp(estamps._id).subscribe((res:any)=>{
-      console.log("res is :",res);
+    this.estampsService.updateEtatEstamp(estamps._id).subscribe((res: any) => {
+      console.log("res is :", res);
       this.getEstamps();
 
-      
+
     })
 
   }
 
 
-  async validateEfleur(efleur:any) {
+  async validateEfleur(efleur: any) {
 
     const { value: text } = await Swal.fire({
-      imageUrl: 'http://localhost:3000/'+efleur.photo,
+      imageUrl: 'http://localhost:3000/' + efleur.photo,
       imageWidth: 200,
       imageHeight: 200,
       input: 'number',
-     //inputLabel: 'Prix',
+      //inputLabel: 'Prix',
       inputPlaceholder: 'Tapez votre prix ici...',
       inputAttributes: {
         'aria-label': 'Tapez votre prix ici'
       },
       showCancelButton: true
     })
-    
+
     if (text) {
 
-      console.log("efleur to product is ",efleur);
-      
+      console.log("efleur to product is ", efleur);
+
 
       let efleurProduct = await {
-        productId:efleur._id,
-        efleur:efleur._id,
-        price:text,
-        photo:efleur.photo,
-        producType:"efleur",
+        productId: efleur._id,
+        efleur: efleur._id,
+        price: text,
+        photo: efleur.photo,
+        producType: "efleur",
       }
 
-      this.productService.postproduct(efleurProduct).subscribe((res:any) => {
-        console.log("product is :",res);
+      this.productService.postproduct(efleurProduct).subscribe((res: any) => {
+        console.log("product is :", res);
         this.getfleurs();
         //Swal.fire(res.data)
-       
-        // sera supprimé aprés la validation 
-    
-this.fleurservice.updateEtatEfleur(efleur._id).subscribe((res:any)=>{
-  console.log("res is :",res);
-  this.getfleurs();
-})
+
+        // sera supprimé aprés la validation
+
+        this.fleurservice.updateEtatEfleur(efleur._id).subscribe((res: any) => {
+          console.log("res is :", res);
+          this.getfleurs();
+        })
       })
     }
 
   }
 
-  
+
 
 }
