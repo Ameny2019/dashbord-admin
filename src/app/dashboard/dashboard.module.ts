@@ -4,7 +4,7 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListDemandeComponent } from './components/demandeProduit/list-demande/list-demande.component';
 import { AjoutDemandeComponent } from './components/demandeProduit/ajout-demande/ajout-demande.component';
-import { UpdateEstampComponent } from './components/estamp/update-estamp/update-estamp.component';
+import { UpdateEstampComponent } from './components/efleur/update-estamp/update-estamp.component';
 import { UpdateEfleurComponent } from './components/efleur/update-efleur/update-efleur.component';
 import { ProductComponent } from './components/product/product.component';
 import { AgentComponent } from './components/utilisateur/agent/agent.component';

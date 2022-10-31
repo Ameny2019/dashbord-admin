@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AjoutDemandeComponent } from './components/demandeProduit/ajout-demande/ajout-demande.component';
 import { ListDemandeComponent } from './components/demandeProduit/list-demande/list-demande.component';
 import { UpdateEfleurComponent } from './components/efleur/update-efleur/update-efleur.component';
-import { UpdateEstampComponent } from './components/estamp/update-estamp/update-estamp.component';
+import { UpdateEstampComponent } from './components/efleur/update-estamp/update-estamp.component';
 import { ListcommandesComponent } from './components/listcommandes/listcommandes.component';
 import { ProductComponent } from './components/product/product.component';
 import { AgentComponent } from './components/utilisateur/agent/agent.component';
