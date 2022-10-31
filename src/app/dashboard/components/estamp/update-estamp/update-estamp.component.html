@@ -1,100 +1,84 @@
 <div class="tab-content tab-content-basic">
-    <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="statistics-details d-flex align-items-center justify-content-between">
-                    <div class="col-12 col-lg-4 col-lg-12 grid-margin stretch-card">
-                        <div class="card card-rounded">
-                            <div class="card-body">
-                                <div class="d-sm-flex justify-content-between align-items-start">
-
-                                    <div class="card-body">
-                                        <h4 class="card-title">Ajouter un produit de la philathélie </h4>
-                                        <form class="form-sample"  (ngSubmit)="addEstamps()">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group row">
-                                                        <label class="col-sm-3 col-form-label">sujet</label>
-                                                        <div class="col-sm-9">
-                                                            <input type="text" class="form-control"
-                                                                formControlName="sujet" placeholder="sujet *">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group row">
-                                                        <label class="col-sm-3 col-form-label">reference</label>
-                                                        <div class="col-sm-9">
-                                                            <input type="text" class="form-control"
-                                                                formControlName="reference"
-                                                                placeholder="reference *">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>                                           
-
-
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group row">
-                                                        <label class="col-sm-3 col-form-label">format</label>
-                                                        <div class="col-sm-9">
-                                                            <input type="text" class="form-control"
-                                                                formControlName="format" placeholder="format *">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <!-- <div class="form-group row">
+  <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="statistics-details d-flex align-items-center justify-content-between">
+          <div class="col-12 col-lg-4 col-lg-12 grid-margin stretch-card">
+            <div class="card card-rounded">
+              <div class="card-body">
+                <div class="d-sm-flex justify-content-between align-items-start">
+                  <div class="card-body">
+                    <h4 class="card-title">Ajouter un produit de la philathélie </h4>
+                    <form class="form-sample" (ngSubmit)="addEstamps()">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">sujet</label>
+                            <div class="col-sm-9">
+                              <input type="text" class="form-control" formControlName="sujet" placeholder="sujet *">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">reference</label>
+                            <div class="col-sm-9">
+                              <input type="text" class="form-control" formControlName="reference"
+                                placeholder="reference *">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">format</label>
+                            <div class="col-sm-9">
+                              <input type="text" class="form-control" formControlName="format" placeholder="format *">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <!-- <div class="form-group row">
                                                         <label class="col-sm-3 col-form-label">Image</label>
                                                         <div class="col-sm-9">
                                                             <input class="form-control"
                                                             type="file" name="fileEstamps"
-                                                            (change)="handleFileInput($event)">                       
+                                                            (change)="handleFileInput($event)">
                                                         </div>
                                                     </div> -->
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group row">
-                                                        <label class="col-sm-3 col-form-label">artiste</label>
-                                                        <div class="col-sm-9">
-                                                            <input type="text" class="form-control"
-                                                                formControlName="artiste" placeholder="artiste *">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-6">
-                                                    <div class="form-group row">
-                                                        <label class="col-sm-3 col-form-label">Quantite </label>
-                                                        <div class="col-sm-9">
-                                                            <input type="text" class="form-control"
-                                                                formControlName="QunatityEstampDisponible" placeholder="artiste *">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                
-                                            </div>
-
-                                            
-                                            <button class="btn btn-rounded btn-light"
-                                                style="float: right;">Cancel</button>
-                                            <button type="submit" class="btn btn-primary btn-rounded"
-                                                style="color: white;float: right;">Submit</button>
-                                        </form>
-                                    </div>
-
-
-
-                                </div>
-                            </div>
                         </div>
-                    </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">artiste</label>
+                            <div class="col-sm-9">
+                              <input type="text" class="form-control" formControlName="artiste" placeholder="artiste *">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Quantite </label>
+                            <div class="col-sm-9">
+                              <input type="text" class="form-control" formControlName="QunatityEstampDisponible"
+                                placeholder="artiste *">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <button class="btn btn-rounded btn-light" style="float: right;">Cancel</button>
+                      <button type="submit" class="btn btn-primary btn-rounded"
+                        style="color: white;float: right;">Submit</button>
+                    </form>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>

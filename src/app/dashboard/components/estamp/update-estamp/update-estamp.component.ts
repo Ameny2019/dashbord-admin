@@ -9,49 +9,46 @@ import { EstampsService } from 'src/app/services/estamps.service';
   styleUrls: ['./update-estamp.component.css']
 })
 export class UpdateEstampComponent implements OnInit {
-
-  formProduct:FormGroup;
+  formProduct: FormGroup;
   fileToUpload: Array<File> = [];
-  estamp:any;
-  id:string=this.activated.snapshot.params['idEstamp'];
+  estamp: any;
+  id: string;
 
-
-  constructor(private activated:ActivatedRoute,private formBuilder:FormBuilder,private router:Router,private estampsService:EstampsService) { }
+  constructor(private activated: ActivatedRoute, private formBuilder: FormBuilder, private router: Router, private estampsService: EstampsService) { }
 
   ngOnInit(): void {
+    this.id = this.activated.snapshot.params['idEstamp'];
     this.formProduct = this.formBuilder.group({
-      sujet:'',
-      reference:'',
-      artiste:'',
-      format:'',
-      QunatityEstampDisponible:'',      
+      sujet: '',
+      reference: '',
+      artiste: '',
+      format: '',
+      QunatityEstampDisponible: '',
     })
     this.getEstampById();
   }
 
-  getEstampById(){
-    this.estampsService.getEstampById(this.id).subscribe((res:any)=> {
-      console.log("efleur is : ",res.data);
+  getEstampById() {
+    this.estampsService.getEstampById(this.id).subscribe((res: any) => {
       this.estamp = res.data;
       this.formProduct.patchValue({
-        reference:this.estamp.reference,
-        sujet:this.estamp.sujet,
-        QunatityEstampDisponible:this.estamp.QunatityEstampDisponible,
-        artiste:this.estamp.artiste,
-        format:this.estamp.format,
+        reference: this.estamp.reference,
+        sujet: this.estamp.sujet,
+        QunatityEstampDisponible: this.estamp.QunatityEstampDisponible,
+        artiste: this.estamp.artiste,
+        format: this.estamp.format,
       })
-      
+
     })
   }
 
-  addEstamps(){
-    console.log("estamps is like :",this.formProduct.value)
-    this.estampsService.updateEstamp(this.formProduct.value,this.id).subscribe(
-      (res:any) => {
-        console.log("product :",res);
+  addEstamps() {
+    this.estampsService.updateEstamp(this.formProduct.value, this.id).subscribe(
+      (res: any) => {
         this.router.navigateByUrl('/home/listDemande')
       }
-    )  }
+    )
+  }
 
 }
 

@@ -9,50 +9,42 @@ import { FleursService } from 'src/app/services/fleurs.service';
   styleUrls: ['./update-efleur.component.css']
 })
 export class UpdateEfleurComponent implements OnInit {
-
-
-  efleur:any;
-  formEfleur:FormGroup
-  id:string=this.activated.snapshot.params['idEfleur'];
-
+  efleur: any;
+  formEfleur: FormGroup
+  id: string;
   fileToUpload: Array<File> = [];
 
-  constructor(private activated:ActivatedRoute,private formBuilder:FormBuilder,private router:Router,private efleureService:FleursService) { }
+  constructor(private activated: ActivatedRoute, private formBuilder: FormBuilder, private router: Router, private efleureService: FleursService) { }
 
   ngOnInit(): void {
+    this.id = this.activated.snapshot.params['idEfleur'];
     this.formEfleur = this.formBuilder.group({
-      nom:'',
-      description:'',
-      QunatityEfleurDisponible:0
+      nom: '',
+      description: '',
+      QunatityEfleurDisponible: 0
     })
-
     this.getEfleurById();
-
   }
 
-  getEfleurById(){
-    this.efleureService.getFleurById(this.id).subscribe((res:any)=> {
-      console.log("efleur is : ",res.data);
+  getEfleurById() {
+    this.efleureService.getFleurById(this.id).subscribe((res: any) => {
       this.efleur = res.data;
       this.formEfleur.patchValue({
-        nom:this.efleur.nom,
-        description:this.efleur.description,
-        photo:this.efleur.photo,
-        QunatityEfleurDisponible:this.efleur.QunatityEfleurDisponible
+        nom: this.efleur.nom,
+        description: this.efleur.description,
+        photo: this.efleur.photo,
+        QunatityEfleurDisponible: this.efleur.QunatityEfleurDisponible
       })
-      
     })
   }
+  
   handleFileInput(files: any) {
     this.fileToUpload = <Array<File>>files.target.files;
-    console.log(this.fileToUpload)
   }
-  update(){
 
-    console.log("estamps is like :",this.formEfleur.value)
-    this.efleureService.updateEfleur(this.formEfleur.value,this.id).subscribe(
-      (res:any) => {
-        console.log("product :",res);
+  update() {
+    this.efleureService.updateEfleur(this.formEfleur.value, this.id).subscribe(
+      (res: any) => {
         this.router.navigateByUrl('/home/listDemande')
       }
     )
