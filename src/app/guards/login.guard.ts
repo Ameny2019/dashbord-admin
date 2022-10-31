@@ -14,9 +14,12 @@ export class LoginGuard implements CanActivate {
     state: RouterStateSnapshot) {
       const token = localStorage.getItem('token');
       if (token) {
-        const isExpired = this.authService.isExpiredToken(token)
+        const isExpired = this.authService.isExpiredToken(token);
         if (!isExpired) {
-          this.router.navigate(['/login'])
+          this.router.navigate(['/home']);
+          return false;
+        }else{
+          return true;
         }
       }
       return true;
