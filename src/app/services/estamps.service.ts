@@ -29,10 +29,6 @@ export class EstampsService {
     return this.http.put(`${environment.baseURL}/estamps/UpdateEstamp/${id}`,efleure)
   }
 
-  updateEtatEstamp(id:any){
-    return this.http.get(`${environment.baseURL}/estamps/updateEtat/${id}`);
-  }
-
   getEstampsOui(){
     return this.http.get(`${environment.baseURL}/estamps/getOuiEtatProductEstamp`)
   }
