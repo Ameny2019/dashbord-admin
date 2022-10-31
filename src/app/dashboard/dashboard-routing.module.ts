@@ -10,6 +10,7 @@ import { AgentComponent } from './components/utilisateur/agent/agent.component';
 import { AgentvalidationComponent } from './components/utilisateur/agentvalidation/agentvalidation.component';
 import { ClientComponent } from './components/utilisateur/client/client.component';
 import { AjoutUtilisateurComponent } from './components/utilisateur/ajout-utilisateur/ajout-utilisateur.component';
+import { CommandeDetailsComponent } from './components/commande-details/commande-details.component';
 
 const routes: Routes = [
   { path: "listDemande", component: ListDemandeComponent },
@@ -20,8 +21,9 @@ const routes: Routes = [
   { path: "ajouteAgent", component: AjoutUtilisateurComponent },
   { path: "listeClient", component: ClientComponent },
   { path: "listeAgent", component: AgentComponent },
-  { path: "listecommandes", component: ListcommandesComponent },
-  { path: "agentvalidation", component: AgentvalidationComponent }
+  { path: "agentvalidation", component: AgentvalidationComponent },
+  { path: "commandes", component: ListcommandesComponent },
+  { path: "commandes/details/:id", component: CommandeDetailsComponent },
 ];
 
 @NgModule({

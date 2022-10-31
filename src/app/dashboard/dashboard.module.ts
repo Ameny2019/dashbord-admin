@@ -12,6 +12,7 @@ import { ClientComponent } from './components/utilisateur/client/client.componen
 import { AjoutUtilisateurComponent } from './components/utilisateur/ajout-utilisateur/ajout-utilisateur.component';
 import { ListcommandesComponent } from './components/listcommandes/listcommandes.component';
 import { AgentvalidationComponent } from './components/utilisateur/agentvalidation/agentvalidation.component';
+import { CommandeDetailsComponent } from './components/commande-details/commande-details.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { AgentvalidationComponent } from './components/utilisateur/agentvalidati
     AjoutUtilisateurComponent,
     ListcommandesComponent,
     AgentvalidationComponent,
+    CommandeDetailsComponent,
   ],
   imports: [
     CommonModule,

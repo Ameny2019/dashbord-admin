@@ -20,9 +20,15 @@
           <td>{{commande?.subTotal}} DTN</td>
           <td>{{commande?.createdAt | date:'short'}}</td>
           <td>
-            <button type="button" (click)="deleteCommande(commande?._id)"
-              class="btn btn-danger btn-rounded btn-icon  mdi mdi-delete-sweep text-white btn-action">
+            <button type="button" [routerLink]="['/home/commandes/details', commande._id]"
+              class="btn btn-success btn-rounded btn-icon mdi mdi-eye-outline text-white btn-action">
             </button>
+            <button type="button" (click)="deleteCommande(commande?._id)"
+              class="btn btn-danger btn-rounded btn-icon mdi mdi-delete-sweep text-white btn-action">
+            </button>
+            <a href="{{commande?.invoiceLink}}" download="facture">
+              <button class="btn btn-primary btn-rounded btn-icon mdi mdi-download text-white btn-action"></button>
+            </a>
           </td>
         </tr>
       </tbody>
