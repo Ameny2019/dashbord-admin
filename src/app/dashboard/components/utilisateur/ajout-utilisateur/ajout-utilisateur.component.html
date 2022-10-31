@@ -1,98 +1,98 @@
 <div class="tab-content tab-content-basic">
-    <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="statistics-details d-flex align-items-center justify-content-between">
-                    <div class="col-12 col-lg-4 col-lg-12 grid-margin stretch-card">
-                        <div class="card card-rounded">
-                            <div class="card-body">
-                                <div class="d-sm-flex justify-content-between align-items-start">
-
-                                    <div class="card-body">
-                                        <h4 class="card-title title">Ajouter un agent</h4>
-                                        <form class="form-sample" [formGroup]="formAgent" (ngSubmit)="add()" autocomplete="off">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group row">
-                                                        <label class="col-sm-3 col-form-label">Nom *</label>
-                                                        <div class="col-sm-9">
-                                                            <input type="text" class="form-control"
-                                                                formControlName="nom" placeholder="Nom et prénom *">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group row">
-                                                        <label class="col-sm-3 col-form-label">Matricule*</label>
-                                                        <div class="col-sm-9">
-                                                            <input type="text" class="form-control"
-                                                                formControlName="adresse"
-                                                                placeholder="Matricule postale">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group row">
-                                                        <label class="col-sm-3 col-form-label">E-mail *</label>
-                                                        <div class="col-sm-9">
-                                                            <input type="text" class="form-control"
-                                                                formControlName="email" placeholder="E-mail *">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group row">
-                                                        <label class="col-sm-3 col-form-label">Mot de passe *</label>
-                                                        <div class="col-sm-9">
-                                                            <input type="password" class="form-control"
-                                                                formControlName="password" placeholder="Mot de passe *">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group row">
-                                                        <label class="col-sm-3 col-form-label">Rôle</label>
-                                                        <div class="col-sm-5">
-                                                            <div class="form-check">
-                                                              <label class="form-check-label">
-                                                                <input type="radio" class="form-check-input" name="membershipRadios" id="membershipRadios2" value="option2" (click)="setAGV()" >
-                                                                Agent de validation
-                                                              <i class="input-helper"></i></label>
-                                                            </div>
-                                                          </div>
-                                                        <div class="col-sm-4" *ngIf="authService.roleSubject.getValue() == 'Admin'">
-                                                          <div class="form-check">
-                                                            <label class="form-check-label">
-                                                              <input type="radio" class="form-check-input" name="membershipRadios" id="membershipRadios1" value=""  checked=""  (click)="setAG()">
-                                                              Agent
-                                                            <i class="input-helper"></i></label>
-                                                          </div>
-                                                        </div>
-
-                                                      </div>
-                                                </div>
-                                            </div>
-                                            <button routerLink="/home" type="button" class="btn btn-rounded btn-light"
-                                                style="float: right;">
-                                                <i class="fa fa-undo"></i> Annuler</button>
-                                            <button type="submit" class="btn btn-primary btn-rounded"
-                                                style="color: white;float: right;">
-                                                <i class="fa fa-save"></i> Ajouter</button>
-                                        </form>
-                                    </div>
-                                </div>
+  <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="statistics-details d-flex align-items-center justify-content-between">
+          <div class="col-12 col-lg-4 col-lg-12 grid-margin stretch-card">
+            <div class="card card-rounded">
+              <div class="card-body">
+                <div class="d-sm-flex justify-content-between align-items-start">
+                  <div class="card-body">
+                    <h4 class="card-title title">Ajouter un agent</h4>
+                    <form class="form-sample" [formGroup]="formAgent" (ngSubmit)="add()" autocomplete="off">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Nom *</label>
+                            <div class="col-sm-9">
+                              <input type="text" class="form-control" formControlName="nom"
+                                placeholder="Nom et prénom *">
                             </div>
+                          </div>
                         </div>
-                    </div>
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Matricule*</label>
+                            <div class="col-sm-9">
+                              <input type="text" class="form-control" formControlName="adresse"
+                                placeholder="Matricule postale">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">E-mail *</label>
+                            <div class="col-sm-9">
+                              <input type="text" class="form-control" formControlName="email" placeholder="E-mail *">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Mot de passe *</label>
+                            <div class="col-sm-9">
+                              <input type="password" class="form-control" formControlName="password"
+                                placeholder="Mot de passe *">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Rôle</label>
+                            <div class="col-sm-5">
+                              <div class="form-check">
+                                <label class="form-check-label">
+                                  <input type="radio" class="form-check-input" name="membershipRadios"
+                                    id="membershipRadios2" value="option2" (click)="setAGV()">
+                                  Agent de validation
+                                  <i class="input-helper"></i></label>
+                              </div>
+                            </div>
+                            <div class="col-sm-4" *ngIf="authService.roleSubject.getValue() == 'Admin'">
+                              <div class="form-check">
+                                <label class="form-check-label">
+                                  <input type="radio" class="form-check-input" name="membershipRadios"
+                                    id="membershipRadios1" value="" checked="" (click)="setAG()">
+                                  Agent
+                                  <i class="input-helper"></i></label>
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-12 d-flex justify-content-end">
+                          <button routerLink="/home" type="button" class="btn btn-rounded btn-light">
+                            <i class="fa fa-undo"></i> Annuler
+                          </button>
+                          <button type="submit" class="btn btn-primary btn-rounded text-white">
+                            <i class="fa fa-save"></i> Ajouter
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>

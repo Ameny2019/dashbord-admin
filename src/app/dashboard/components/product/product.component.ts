@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastService } from 'angular-toastify';
+import { SweetAlertService } from 'src/app/providers/sweet-alert.service';
 import { ProductService } from 'src/app/services/product.service';
-import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-product',
@@ -9,50 +10,33 @@ import Swal from 'sweetalert2';
 })
 export class ProductComponent implements OnInit {
 
-  products:any;
+  products: any;
 
-  constructor(private productService:ProductService) { }
+  constructor(private productService: ProductService,
+    private toastService: ToastService,
+    private sweetAlertService: SweetAlertService,) { }
 
   ngOnInit(): void {
-    this.getProducts()
-;    
+    this.getProducts();
   }
 
-  getProducts(){
-    this.productService.getproduct().subscribe((res:any) => {
-      console.log("all products :",res.data);
+  getProducts() {
+    this.productService.getproduct().subscribe((res: any) => {
       this.products = res.data;
     })
   }
 
-  deleteProduct(id_product:any){
-
-
-    Swal.fire({
-      title: 'etes vous sure?',
-      text: "La supression de cet élément est irreversible",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Oui, Supprimer!'
-    }).then((result) => {
-      if (result.isConfirmed) {
-
-        this.productService.deleteproduct(id_product).subscribe((res:any)=>{
+  deleteProduct(id_product: any) {
+    this.sweetAlertService.deleteConfirmation().then((result) => {
+      if (result.value) {
+        this.productService.deleteproduct(id_product).subscribe((response: any) => {
+          this.toastService.success(response?.message);
           this.getProducts();
-        })
-
-        Swal.fire(
-          'Supprimé!',
-          'element supprimé avec succés.',
-          'success'
-        )
+        }, (error: any) => {
+          this.toastService.error(`${error?.error?.message}`);
+        });
       }
-    })
-
-
-
+    });
   }
 
 }

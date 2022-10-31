@@ -1,6 +1,6 @@
 <div class="card-body">
     <h4 class="card-title">Liste des commandes </h4>
-    <p class="card-description">
+    <p class="card-description"> 
     </p>
     <div class="table-responsive">
         <table class="table">
@@ -38,7 +38,7 @@
                     <td *ngIf="commande.commandeType == 'efleur'" >{{commande?.efleur?.description}}</td>
                     <td *ngIf="commande.commandeType == 'efleur'" >{{commande?.efleur?.QunatityEfleurDisponible}}</td>
                     <td *ngIf="commande.commandeType == 'efleur'" >
-  
+
 
                         <button type="button"  (click)="deletecommande(commande?._id)"
                             class="btn btn-danger btn-rounded btn-icon  mdi mdi-delete-sweep"  style="height: 40PX;

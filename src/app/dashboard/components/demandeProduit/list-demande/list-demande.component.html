@@ -17,7 +17,7 @@
         <tr *ngFor="let estamp of estamps">
           <td>
             <img
-              src="http://localhost:3000/{{ estamp.photo }}"
+              [src]="estamp.photo"
               style="height: 100px; width: 100px"
             />
           </td>
@@ -53,7 +53,7 @@
         <tr *ngFor="let fleur of fleurs" style="background-color: #e2e8ef">
           <td>
             <img
-              src="http://localhost:3000/{{ fleur?.photo }}"
+              [src]="fleur?.photo"
               style="height: 100px; width: 100px"
             />
           </td>
