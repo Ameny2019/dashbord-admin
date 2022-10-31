@@ -13,7 +13,7 @@
         </tr>
       </thead>
       <tbody>
-        <!-- formulaire des timbres postes  -->
+        <!-- partie des timbres postes : estamps -->
         <tr *ngFor="let estamp of estamps">
           <td>
             <img [src]="estamp.photo" class="img-product" />
@@ -33,6 +33,7 @@
             </button>
           </td>
         </tr>
+        <!-- partie des fleurs de poste : fleurs -->
         <tr *ngFor="let fleur of fleurs" class="bg-white">
           <td>
             <img [src]="fleur?.photo" class="img-product" />
