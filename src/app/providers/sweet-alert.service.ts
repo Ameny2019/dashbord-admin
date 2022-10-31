@@ -22,7 +22,7 @@ export class SweetAlertService {
     });
   }
 
-  showApprovementAlert(imgURL: any, price: any){
+  showApprovementAlert(imgURL: any){
     return Swal.fire({
       imageUrl: imgURL,
       imageWidth: 200,

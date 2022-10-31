@@ -61,14 +61,13 @@ export class ListDemandeComponent implements OnInit {
   }
 
   async validateEstamp(estamps: any) {
-    this.sweetAlertService.showApprovementAlert(estamps.photo, estamps.price).then((result) => {
+    this.sweetAlertService.showApprovementAlert(estamps.photo).then((result) => {
       if (result.value) {
         // approve the current efleur
         const productData = {
           price: result.value,
           producType: "estamp",
           estamp: estamps._id,
-          quantity: result.value,
         }
         this.createProductAndApprouveSubProduct(productData, estamps._id);
       }
@@ -76,14 +75,13 @@ export class ListDemandeComponent implements OnInit {
   }
 
   validateEfleur(efleur: any) {
-    this.sweetAlertService.showApprovementAlert(efleur.photo, efleur.price).then((result) => {
+    this.sweetAlertService.showApprovementAlert(efleur.photo).then((result) => {
       if (result.value) {
         // approve the current efleur
         const productData = {
           price: result.value,
           producType: "efleur",
           efleur: efleur._id,
-          quantity: result.value,
         }
         this.createProductAndApprouveSubProduct(productData, efleur._id);
       }
