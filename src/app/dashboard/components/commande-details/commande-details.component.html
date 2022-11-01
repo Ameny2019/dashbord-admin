@@ -1,1 +1,96 @@
-<p>commande-details works!</p>
+<div class="tab-content tab-content-basic">
+  <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="statistics-details d-flex align-items-center justify-content-between">
+          <div class="col-12 col-lg-4 col-lg-12 grid-margin stretch-card">
+            <div class="card card-rounded">
+              <div class="card-body">
+                <div class="d-sm-flex justify-content-between align-items-start">
+                  <div class="card-body">
+                    <h4 class="card-title title">Détails du commande</h4>
+                    <hr class="mb-3">
+                    <div class="row mb-3">
+                      <div class="col-md-6">
+                        <span class="font-weight-bold">Nom du client :</span>
+                        {{commandeDetails?.user?.nom}}
+                      </div>
+                      <div class="col-md-6">
+                        <span class="font-weight-bold">E-mail :</span>
+                        {{commandeDetails?.user?.email}}
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <div class="col-md-6">
+                        <span class="font-weight-bold">Adresse de livraison :</span>
+                        {{commandeDetails?.user?.adresse}}
+                      </div>
+                      <div class="col-md-6">
+                        <span class="font-weight-bold">Téléphone :</span>
+                        {{commandeDetails?.user?.tel}}
+                      </div>
+                    </div>
+                    <hr class="mb-3">
+                    <div class="row mb-3">
+                      <div class="col-md-12">
+                        <table class="table table-hover table-striped table-responsive">
+                          <thead>
+                            <tr>
+                              <th><span>N°</span></th>
+                              <th><span>Description</span></th>
+                              <th><span>Qté</span></th>
+                              <th><span>Prix unitaire</span></th>
+                              <th><span>Sous-total</span></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let item of commandeDetails?.items; let i=index">
+                              <td><span>{{i+1}}.</span></td>
+                              <td><span>{{item?.product_name}}</span></td>
+                              <td><span data-prefix>{{item?.quantity}}</span></td>
+                              <td>
+                                <span>{{item?.price}} DTN</span>
+                              </td>
+                              <td>
+                                <span data-prefix></span>
+                                <span>{{item?.total/1000 }} DTN</span>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <hr class="mb-3">
+                    <div class="row mb-3">
+                      <div class="col-md-6">
+                        <span class="font-weight-bold">Facture: </span>
+                        <a href="{{commandeDetails?.invoiceLink}}" download="facture">
+                          <button class="btn btn-success btn-icon mdi mdi-download text-white btn-action"></button>
+                        </a>
+                      </div>
+                      <div class="col-md-6">
+                        <span class="font-weight-bold">Total</span>
+                        {{commandeDetails?.subTotal}} DTN
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <div class="col-md-6">
+                        <span class="font-weight-bold">Date de création</span>
+                        {{commandeDetails?.createdAt | date:'short'}}
+                      </div>
+                      <div class="col-md-6 d-flex justify-content-end">
+                        <button routerLink="/home/commandes" class="btn btn-rounded btn-primary text-white float-right">
+                          <i class="fa fa-undo"></i> Retour
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

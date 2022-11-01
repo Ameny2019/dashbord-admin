@@ -16,15 +16,8 @@ export class CommandesService {
     return this.http.delete(`${environment.baseURL}/Cart/deleteCart/${id}`);
   }
 
-  postcommande(product: any) {
-    return this.http.post(`${environment.baseURL}/listecommandes/createcommande`, product);
+  getCommandeDetails(id: any) {
+    return this.http.get(`${environment.baseURL}/Cart/getCartById/${id}`)
   }
 
-  getCommandeById(id: any) {
-    return this.http.get(`${environment.baseURL}/listecommandes/getCommandeById/${id}`)
-  }
-
-  // updateEstamp(efleure:any,id:any){
-  //   return this.http.put(`${environment.baseURL}/product/UpdateEstamp/${id}`,efleure)
-  // }
 }
